@@ -1,0 +1,13 @@
+version: 2.1
+orbs:
+  matlab: mathworks/matlab@dev:v1
+jobs:
+  build:
+    machine:
+      image: ubuntu-2204:2023.10.1
+    steps:
+      - checkout
+      - matlab/install:
+          products: Simulink Simulink_Test Parallel_Computing_Toolbox
+      - matlab/run-tests:
+          use-parallel: true
