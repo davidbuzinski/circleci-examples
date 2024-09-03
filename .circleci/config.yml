@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   matlab: mathworks/matlab@1
 jobs:
-  build:
+  my-job:   
     machine:
       image: ubuntu-2204:current
     steps:
@@ -14,3 +14,8 @@ jobs:
             Parallel_Computing_Toolbox
       - matlab/run-tests:
           use-parallel: true
+workflows:
+  build:
+    jobs:
+      - my-job:
+          name: My Job
